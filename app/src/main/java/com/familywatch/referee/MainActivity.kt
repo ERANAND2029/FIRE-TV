@@ -23,6 +23,16 @@ import java.util.TimeZone
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 
+/**
+ * MainActivity serves as the lean Leanback container for Family Watch Referee.
+ * 
+ * Key Responsibilities:
+ *  1. Immersive 10-foot TV window configuration (hiding system UI, sticky immersive mode).
+ *  2. Full-featured WebView initialization with DOM storage, file assets, and hardware acceleration.
+ *  3. Bidirectional JavaScriptInterface exposure for Android platform features and Amazon Bedrock.
+ *  4. Interception and re-dispatch of hardware D-pad key events (DPAD_UP/DOWN/LEFT/RIGHT, CENTER, BACK)
+ *     directly to synthetic DOM KeyboardEvents for deterministic 10-foot spatial navigation.
+ */
 class MainActivity : Activity() {
 
     private lateinit var webView: WebView
