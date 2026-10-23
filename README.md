@@ -3,6 +3,19 @@
 > **The AI Household Compromise Engine for Fire TV & Android TV**  
 > *Ending the nightly "Aaj kya dekhein?" living room argument once and for all.*
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Platform: Fire OS / Android TV](https://img.shields.io/badge/Platform-Fire%20OS%20%7C%20Android%20TV-FF9900.svg)](https://developer.amazon.com/fire-tv)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-success.svg)](https://eranand2029.github.io/FIRE-TV/)
+[![Build Status](https://img.shields.io/badge/Build-assembleDebug%20Passing-brightgreen.svg)]()
+[![AWS: Amazon Bedrock](https://img.shields.io/badge/AWS-Amazon%20Bedrock%20Claude%203-232F3E.svg)](docs/AWS_INTEGRATION.md)
+
+---
+
+## 🌐 Quick Links
+- **Live Interactive Web Demo:** [https://eranand2029.github.io/FIRE-TV/](https://eranand2029.github.io/FIRE-TV/) *(Works in any browser with keyboard arrow keys + Enter)*
+- **GitHub Repository:** [https://github.com/ERANAND2029/FIRE-TV](https://github.com/ERANAND2029/FIRE-TV)
+- **Pre-Built Debug APK:** `app/build/outputs/apk/debug/app-debug.apk`
+
 ---
 
 ## 🏆 Amazon Developer Hackathon Submission
