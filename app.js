@@ -208,6 +208,19 @@
   }
 
   // --- AI SCORING & COMPROMISE ARBITRATION ENGINE ---
+  /**
+   * Evaluates a candidate movie against the active household member constraints.
+   * Multi-objective scoring model:
+   *  1. Hard Constraint: Kid-Safety filter (prunes non-U rating if any child profile is active).
+   *  2. Runtime Constraint: Steep linear penalty for exceeding the strictest bedtime cutoff.
+   *  3. Preference Matching: Additive mood consensus with unanimity boost for complete alignment.
+   *  4. Household Memory: Variety preservation (repeat watch penalty) + temporal day-parting bias.
+   * 
+   * @param {Object} movie - Catalog movie item with id, title, genre, runtime, ageRating, moodTags.
+   * @param {Array<Object>} activeProfiles - List of participating family profiles.
+   * @param {Object} memoryData - Historical viewing trends and recent titles from localStorage.
+   * @returns {{score: number, eligible: boolean, reasons: Array<string>}} Candidate evaluation score.
+   */
   function scoreMovie(movie, activeProfiles, memoryData) {
     let score = 0;
     const reasons = [];
@@ -298,6 +311,16 @@
   }
 
   // --- HINGLISH EXPLANATION ENGINE (Offline Rule-Based + Optional Native Bedrock Bridge) ---
+  /**
+   * Generates a witty, culturally contextual Hinglish arbitration reason explaining the pick.
+   * Priority cascade:
+   *  1. Native Amazon Bedrock Bridge: Calls Claude 3 Haiku over SigV4 with custom prompt.
+   *  2. Offline Heuristic Fallback: Instant dynamic template matching participating family member roles.
+   * 
+   * @param {Object} winner - Selected compromise movie title.
+   * @param {Array<Object>} activeMembers - List of active household member profiles.
+   * @returns {Promise<{text: string, source: string}>} The one-line explanation and attribution.
+   */
   async function explainPick(winner, activeMembers) {
     // Check if Native Kotlin Bedrock Bridge is available and configured
     if (window.BedrockNative && window.APP_CONFIG && window.APP_CONFIG.useBedrock) {
