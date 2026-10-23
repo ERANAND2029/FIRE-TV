@@ -1,0 +1,26 @@
+# Build and Gradle
+.gradle/
+build/
+app/build/
+*.apk
+*.aab
+
+# Local configuration and credentials
+local.properties
+config.js
+assets/www/config.js
+app/src/main/assets/www/config.js
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Local tools & SDKs cached in workspace
+.tools/
+.android-sdk/
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Family Watch Referee</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="tv-body">
+  <!-- Top Navigation & Ambient Header -->
+  <header class="tv-header">
+    <div class="logo-group">
+      <div class="referee-badge">
+        <span class="whistle-icon">📺⚖️</span>
+        <span class="badge-text">FIRE TV</span>
+      </div>
+      <div class="title-meta">
+        <h1 class="main-title">Family Watch Referee</h1>
+        <p class="tagline">The AI Household Compromise Engine • "Aaj kya dekhein?" Khatam!</p>
+      </div>
+    </div>
+    <div class="header-status">
+      <div class="time-badge" id="timeBadge">--:--</div>
+      <div class="context-badge" id="contextBadge">Family Prime Time</div>
+      <div class="engine-badge" id="engineBadge">AI Engine: Offline Rule-Based</div>
+    </div>
+  </header>
+
+  <!-- Ambient Dynamic Notification Banner (Household Memory) -->
+  <section class="memory-ribbon" id="memoryRibbon">
+    <span class="memory-spark">💡 AI Household Memory:</span>
+    <span class="memory-text" id="memoryText">Analyzing past family viewing patterns...</span>
+  </section>
+
+  <!-- MAIN VIEW CONTAINER -->
+  <main class="tv-viewport" id="tvViewport">
+    
+    <!-- VIEW 1: SELECTION STAGE (PROFILES & PREFERENCES) -->
+    <div class="view-screen active-screen" id="screenSelection">
+      <div class="section-heading">
+        <h2>1. Kaun-Kaun Dekh Raha Hai? <span class="subtext">(Select active members with D-Pad OK)</span></h2>
+      </div>
+
+      <!-- Profiles Row -->
+      <div class="profiles-grid" id="profilesGrid" role="region" aria-label="Family Member Profiles">
+        <!-- Papa Card -->
+        <div class="profile-card focused" id="card-papa" data-id="papa" tabindex="0">
+          <div class="card-glow"></div>
+          <div class="avatar-ring">
+            <span class="avatar-emoji">👨‍💼</span>
+          </div>
+          <div class="profile-info">
+            <h3 class="profile-name">Papa</h3>
+            <span class="role-desc">Family Head</span>
+          </div>
+          <div class="toggle-pill active" id="pill-papa">
+            <span class="pill-dot"></span>
+            <span class="pill-label">Watching</span>
+          </div>
+          <div class="profile-prefs">
+            <div class="pref-badge">Mood: <strong id="papa-mood-label">Family</strong></div>
+            <div class="pref-badge">Max: <strong id="papa-time-label">90m</strong></div>
+          </div>
+        </div>
+
+        <!-- Mummy Card -->
+        <div class="profile-card" id="card-mummy" data-id="mummy" tabindex="0">
+          <div class="card-glow"></div>
+          <div class="avatar-ring">
+            <span class="avatar-emoji">👩‍🍳</span>
+          </div>
+          <div class="profile-info">
+            <h3 class="profile-name">Mummy</h3>
+            <span class="role-desc">Heart of House</span>
+          </div>
+          <div class="toggle-pill active" id="pill-mummy">
+            <span class="pill-dot"></span>
+            <span class="pill-label">Watching</span>
+          </div>
+          <div class="profile-prefs">
+            <div class="pref-badge">Mood: <strong id="mummy-mood-label">Comedy</strong></div>
+            <div class="pref-badge">Max: <strong id="mummy-time-label">90m</strong></div>
+          </div>
+        </div>
+
+        <!-- Bhai Card -->
+        <div class="profile-card" id="card-bhai" data-id="bhai" tabindex="0">
+          <div class="card-glow"></div>
+          <div class="avatar-ring">
+            <span class="avatar-emoji">🎧</span>
+          </div>
+          <div class="profile-info">
+            <h3 class="profile-name">Bhai</h3>
+            <span class="role-desc">College Kid</span>
+          </div>
+          <div class="toggle-pill active" id="pill-bhai">
+            <span class="pill-dot"></span>
+            <span class="pill-label">Watching</span>
+          </div>
+          <div class="profile-prefs">
+            <div class="pref-badge">Mood: <strong id="bhai-mood-label">Action</strong></div>
+            <div class="pref-badge">Max: <strong id="bhai-time-label">120m</strong></div>
+          </div>
+        </div>
+
+        <!-- Chhotu Card (Kid Mode) -->
+        <div class="profile-card" id="card-chhotu" data-id="chhotu" tabindex="0">
+          <div class="card-glow"></div>
+          <div class="avatar-ring kid-ring">
+            <span class="avatar-emoji">🧒</span>
+          </div>
+          <div class="profile-info">
+            <h3 class="profile-name">Chhotu</h3>
+            <span class="role-desc kid-tag">KIDS FILTER ACTIVE</span>
+          </div>
+          <div class="toggle-pill active" id="pill-chhotu">
+            <span class="pill-dot"></span>
+            <span class="pill-label">Watching</span>
+          </div>
+          <div class="profile-prefs">
+            <div class="pref-badge">Mood: <strong id="chhotu-mood-label">Chill</strong></div>
+            <div class="pref-badge">Max: <strong id="chhotu-time-label">60m</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Config Panel for Currently Focused Profile -->
+      <div class="config-panel" id="configPanel">
+        <div class="config-header">
+          <span class="config-target-icon" id="focusedAvatar">👨‍💼</span>
+          <span class="config-title">Preferences for <span id="focusedName">Papa</span></span>
+          <span class="config-hint">(D-Pad Down to edit moods & runtime)</span>
+        </div>
+        <div class="config-controls">
+          <!-- Mood Selection Row -->
+          <div class="control-row">
+            <span class="control-label">Mood:</span>
+            <div class="options-row" id="moodOptions">
+              <button class="nav-btn mood-btn active" data-action="set-mood" data-value="Action" tabindex="0">Action 💥</button>
+              <button class="nav-btn mood-btn" data-action="set-mood" data-value="Comedy" tabindex="0">Comedy 😂</button>
+              <button class="nav-btn mood-btn" data-action="set-mood" data-value="Family" tabindex="0">Family 👨‍👩‍👧‍👦</button>
+              <button class="nav-btn mood-btn" data-action="set-mood" data-value="Thriller" tabindex="0">Thriller 🕵️</button>
+              <button class="nav-btn mood-btn" data-action="set-mood" data-value="Chill" tabindex="0">Chill ☕</button>
+            </div>
+          </div>
+          <!-- Max Runtime Selection Row -->
+          <div class="control-row">
+            <span class="control-label">Max Runtime:</span>
+            <div class="options-row" id="timeOptions">
+              <button class="nav-btn time-btn" data-action="set-time" data-value="60" tabindex="0">60 Mins ⚡</button>
+              <button class="nav-btn time-btn active" data-action="set-time" data-value="90" tabindex="0">90 Mins ⏳</button>
+              <button class="nav-btn time-btn" data-action="set-time" data-value="120" tabindex="0">120 Mins 🎬</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Action Row -->
+      <div class="decision-action-bar">
+        <button class="nav-btn primary-action-btn" id="btnDecide" data-action="decide" tabindex="0">
+          <span class="btn-icon">⚖️</span>
+          <span class="btn-text">DECIDE FOR THE HOUSEHOLD!</span>
+          <span class="btn-subtext">(D-Pad OK to Run AI Referee)</span>
+        </button>
+
+        <button class="nav-btn secondary-action-btn" id="btnVoice" data-action="voice-modal" tabindex="0">
+          <span class="btn-icon">🎙️</span>
+          <span class="btn-text">Voice Input (Beta)</span>
+        </button>
+
+        <button class="nav-btn secondary-action-btn" id="btnResetMem" data-action="reset-memory" tabindex="0">
+          <span class="btn-icon">🔄</span>
+          <span class="btn-text">Reset Memory</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- VIEW 2: AI THINKING OVERLAY -->
+    <div class="view-screen hidden-screen" id="screenThinking">
+      <div class="thinking-card">
+        <div class="thinking-spinner">
+          <div class="spinner-ring"></div>
+          <span class="referee-whistle-anim">⚖️</span>
+        </div>
+        <h2 class="thinking-title">Referee is Negotiating...</h2>
+        <p class="thinking-desc" id="thinkingStatus">Balancing Papa's patience, Mummy's laughter, and Chhotu's bedtime...</p>
+        <div class="scoring-bars">
+          <div class="score-pill">Kid-Safety Filter: <span class="score-stat green">STRICT LOCK</span></div>
+          <div class="score-pill">Runtime Limit: <span class="score-stat gold" id="thinkingLimit">90m MAX</span></div>
+          <div class="score-pill">Consensus Weight: <span class="score-stat cyan">OPTIMIZED</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: WINNING DECISION SCREEN -->
+    <div class="view-screen hidden-screen" id="screenResult">
+      <div class="result-layout">
+        <!-- Left: Big Movie Poster Card -->
+        <div class="result-poster-col">
+          <div class="poster-hero-card" id="winnerPoster">
+            <div class="poster-badge-top" id="winnerAgeBadge">U</div>
+            <div class="poster-inner">
+              <span class="poster-icon" id="winnerIcon">🍿</span>
+              <h2 class="poster-title" id="winnerTitle">Chai Aur Chandrayaan</h2>
+              <div class="poster-genre" id="winnerGenre">Sci-Fi / Family</div>
+            </div>
+            <div class="poster-meta-bottom">
+              <span class="meta-item" id="winnerRuntime">92 min</span>
+              <span class="meta-dot">•</span>
+              <span class="meta-item" id="winnerMoods">Family, Chill</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: The Decision Details & Reasoning -->
+        <div class="result-details-col">
+          <div class="winner-header">
+            <span class="trophy-tag">🏆 UNANIMOUS REFEREE COMPROMISE</span>
+            <div class="score-tag" id="winnerScoreTag">Match Score: 98%</div>
+          </div>
+
+          <!-- Explanation Quote Box -->
+          <div class="explanation-box">
+            <div class="referee-avatar-small">
+              <span>⚖️</span>
+            </div>
+            <div class="explanation-content">
+              <div class="explanation-source" id="explanationSource">REFEREE EXPLANATION (HINGLISH AI):</div>
+              <p class="explanation-line" id="winnerExplanation">
+                "Chhotu ke liye safe, Papa ko comedy, 90 min mein sabka bedtime sorted!"
+              </p>
+            </div>
+          </div>
+
+          <!-- Synopsis -->
+          <div class="synopsis-box">
+            <h4 class="synopsis-header">Synopsis:</h4>
+            <p class="synopsis-text" id="winnerSynopsis">
+              A heartwarming story balancing everyone's taste withzero arguments.
+            </p>
+          </div>
+
+          <!-- Active Compromise Badges -->
+          <div class="compromise-metrics" id="compromiseMetrics">
+            <!-- Dynamically populated tags -->
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="result-actions-row">
+            <button class="nav-btn primary-action-btn" id="btnPlay" data-action="play-movie" tabindex="0">
+              <span class="btn-icon">▶️</span>
+              <span class="btn-text">PLAY NOW</span>
+            </button>
+            <button class="nav-btn secondary-action-btn" id="btnDecideAgain" data-action="decide-again" tabindex="0">
+              <span class="btn-icon">🔀</span>
+              <span class="btn-text">DECIDE AGAIN (NEXT BEST)</span>
+            </button>
+            <button class="nav-btn secondary-action-btn" id="btnBackToConfig" data-action="back-to-config" tabindex="0">
+              <span class="btn-icon">⬅️</span>
+              <span class="btn-text">CHANGE PROFILES</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 4: SIMULATED MEDIA PLAYER -->
+    <div class="view-screen hidden-screen" id="screenPlayer">
+      <div class="player-container" id="playerContainer">
+        <div class="player-backdrop" id="playerBackdrop"></div>
+        <div class="player-overlay">
+          <div class="player-top">
+            <div class="now-playing-badge">NOW STREAMING ON FIRE TV</div>
+            <h2 class="player-title" id="playerTitle">Chai Aur Chandrayaan</h2>
+            <div class="player-meta" id="playerMeta">Family Watch Compromise • 1080p Full HD</div>
+          </div>
+          
+          <div class="player-center">
+            <div class="playback-indicator" id="playPauseIcon">▶️</div>
+            <div class="playback-status-text" id="playerStateText">Household Peace Achieved!</div>
+          </div>
+
+          <div class="player-bottom">
+            <div class="progress-bar-container">
+              <div class="progress-fill" id="progressFill" style="width: 12%;"></div>
+            </div>
+            <div class="time-readout">
+              <span id="playerCurrentTime">11:04</span>
+              <span id="playerTotalTime">92:00</span>
+            </div>
+            <div class="player-controls-row">
+              <button class="nav-btn player-ctrl-btn" id="btnPlayerToggle" data-action="toggle-play" tabindex="0">Pause (Space/OK)</button>
+              <button class="nav-btn player-ctrl-btn" id="btnPlayerExit" data-action="exit-player" tabindex="0">Exit to Referee (Back)</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 5: VOICE MODAL (OPTIONAL VOICE FEATURE) -->
+    <div class="view-screen hidden-screen" id="screenVoice">
+      <div class="voice-modal-card">
+        <div class="voice-mic-wave">
+          <span class="mic-icon">🎙️</span>
+        </div>
+        <h2 class="voice-title">Listening for Remote Voice...</h2>
+        <p class="voice-hint">Say things like: <em>"Papa and Mummy want Comedy 90 minutes"</em></p>
+        <div class="voice-transcript-box" id="voiceTranscript">
+          "Family comedy under 90 minutes"
+        </div>
+        <div class="voice-actions">
+          <button class="nav-btn primary-action-btn" id="btnVoiceApply" data-action="apply-voice" tabindex="0">Apply Voice Preferences</button>
+          <button class="nav-btn secondary-action-btn" id="btnVoiceCancel" data-action="cancel-voice" tabindex="0">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Remote Navigation Help Footer (10-foot TV prompt) -->
+  <footer class="tv-footer">
+    <div class="remote-key-hint">
+      <span class="key-pill">▲ ▼ ◄ ►</span> Navigate
+    </div>
+    <div class="remote-key-hint">
+      <span class="key-pill">OK / ENTER</span> Select / Toggle
+    </div>
+    <div class="remote-key-hint">
+      <span class="key-pill">BACK / ESC</span> Return
+    </div>
+    <div class="remote-key-hint">
+      <span class="key-pill">AUDIO</span> D-Pad Friendly
+    </div>
+  </footer>
+
+  <!-- Data & Configuration Scripts -->
+  <script src="catalog.js"></script>
+  <script src="config.js" onerror="console.log('No local config.js, using default offline configuration');"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.FamilyWatchReferee.NoActionBar" parent="android:Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">#07090E</item>
+        <item name="android:colorBackground">#07090E</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+</resources>

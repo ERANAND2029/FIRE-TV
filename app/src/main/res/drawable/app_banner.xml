@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+    <!-- Deep Cinematic Background -->
+    <path
+        android:fillColor="#0D1117"
+        android:pathData="M0,0h320v180h-320z" />
+    
+    <!-- Accent Banner Glow -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M16,16h288v148h-288z" />
+
+    <!-- Referee Whistle / TV Icon Symbol -->
+    <path
+        android:fillColor="#F5C518"
+        android:pathData="M60,60 h40 v60 h-40 z" />
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M120,60 h140 v24 h-140 z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M120,96 h100 v16 h-100 z" />
+</vector>
