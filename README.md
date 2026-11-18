@@ -6,6 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform: Fire OS / Android TV](https://img.shields.io/badge/Platform-Fire%20OS%20%7C%20Android%20TV-FF9900.svg)](https://developer.amazon.com/fire-tv)
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-success.svg)](https://eranand2029.github.io/FIRE-TV/)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/ERANAND2029/FIRE-TV)
 [![Build Status](https://img.shields.io/badge/Build-assembleDebug%20Passing-brightgreen.svg)]()
 [![AWS: Amazon Bedrock](https://img.shields.io/badge/AWS-Amazon%20Bedrock%20Claude%203-232F3E.svg)](docs/AWS_INTEGRATION.md)
 
@@ -110,6 +111,33 @@ The result? Over 30 minutes wasted scrolling through streaming rows, leading to 
         | - Household Memory (localStorage) |   +----------------------------+
         +-----------------------------------+
 ```
+
+---
+
+## ☁️ Deploy on Render (1-Click Cloud Deployment)
+
+This repository includes native support for **[Render](https://render.com)** as both a **Web Service (Node.js)** and **Blueprint (`render.yaml`)**.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/ERANAND2029/FIRE-TV)
+
+### Option 1: Render Blueprint (Automatic 1-Click)
+1. Go to your [Render Dashboard](https://dashboard.render.com).
+2. Click **New +** -> **Blueprint**.
+3. Select this repository (`FIRE-TV`).
+4. Render automatically reads `render.yaml` and deploys the web service with zero manual configuration.
+
+### Option 2: Render Web Service (Manual)
+1. Click **New +** -> **Web Service**.
+2. Connect repository `ERANAND2029/FIRE-TV`.
+3. Set the following settings:
+   - **Environment:** `Node`
+   - **Build Command:** `npm install && node build.js`
+   - **Start Command:** `npm start`
+   - **Health Check Path:** `/health`
+4. Click **Deploy Web Service**.
+
+### Option 3: Docker Deployment
+A production `Dockerfile` is included. You can simply select **Docker** runtime in Render settings.
 
 ---
 

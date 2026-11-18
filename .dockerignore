@@ -1,0 +1,15 @@
+node_modules
+.git
+.github
+.gradle
+.idea
+.tools
+.android-sdk
+build
+app/build
+*.apk
+*.aab
+screenshots
+docs
+local.properties
+npm-debug.log*

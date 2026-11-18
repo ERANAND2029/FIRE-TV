@@ -1,0 +1,19 @@
+# Render Blueprint for Family Watch Referee
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  # Web Service (Node.js) - Recommended
+  - type: web
+    name: family-watch-referee
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && node build.js
+    startCommand: node server.js
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
