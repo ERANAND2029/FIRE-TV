@@ -24,3 +24,14 @@ app/src/main/assets/www/config.js
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# Node.js & Web Server
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.env
+.env.local
+.env.*.local
+

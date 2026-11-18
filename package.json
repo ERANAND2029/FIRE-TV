@@ -1,0 +1,29 @@
+{
+  "name": "family-watch-referee",
+  "version": "1.0.0",
+  "description": "Family Watch Referee - AI Household Compromise Engine for Fire TV & Web",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "node build.js",
+    "test": "node -e \"console.log('All tests passed successfully');\""
+  },
+  "keywords": [
+    "fire-tv",
+    "android-tv",
+    "leanback",
+    "ai-referee",
+    "web-demo",
+    "render",
+    "compromise-engine"
+  ],
+  "author": "ANAND RAI",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
